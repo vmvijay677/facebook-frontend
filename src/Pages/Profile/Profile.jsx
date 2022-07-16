@@ -4,18 +4,25 @@ import ProfileCard from "../../Components/ProfileCard/ProfileCard";
 import ProfileLeft from "../../Components/ProfileLeft/ProfileLeft";
 import RightSide from "../../Components/RightSide/RightSide";
 import "./Profile.css";
+import Slide from "react-reveal/Slide";
 
 const Profile = () => {
   return (
     <div className="Profile">
-      <ProfileLeft />
+      <Slide left>
+        <ProfileLeft />
+      </Slide>
 
       <div className="Profile-center">
-        <ProfileCard location="profilePage" />
-        <PostSide />
+        <Slide bottom>
+          <ProfileCard location="profilePage" />
+          <PostSide />
+        </Slide>
       </div>
 
-      <RightSide />
+      <Slide right>
+        <RightSide />
+      </Slide>
     </div>
   );
 };

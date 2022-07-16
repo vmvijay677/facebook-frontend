@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Auth.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, signUp } from "../../Actions/AuthAction";
+import Slide from "react-reveal/Slide";
 
 const Auth = () => {
   const dispatch = useDispatch();
@@ -55,124 +56,126 @@ const Auth = () => {
   };
 
   return (
-    <div className="Auth">
-      <div className="a-left">
-        <img
-          src="https://westwind.org/wp-content/uploads/2018/11/facebook-logo-png.png"
-          alt=""
-        ></img>
-        <div className="Webname">
-          <h1>facebook.com</h1>
-          <h3>The Next Gen</h3>
+    <Slide bottom>
+      <div className="Auth">
+        <div className="a-left">
+          <img
+            src="https://westwind.org/wp-content/uploads/2018/11/facebook-logo-png.png"
+            alt=""
+          ></img>
+          <div className="Webname">
+            <h1>facebook.com</h1>
+            <h3>The Next Gen</h3>
+          </div>
         </div>
-      </div>
 
-      {/* Signup - right side */}
-      <div className="a-right">
-        <form className="infoForm authForm" onSubmit={handleSubmit}>
-          <h3>{isSignUp ? "Register" : "Login"}</h3>
-          {isSignUp && (
+        {/* Signup - right side */}
+        <div className="a-right">
+          <form className="infoForm authForm" onSubmit={handleSubmit}>
+            <h3>{isSignUp ? "Register" : "Login"}</h3>
+            {isSignUp && (
+              <div>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="infoInput"
+                  name="firstname"
+                  onChange={handleChange}
+                  value={data.firstname}
+                ></input>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="infoInput"
+                  name="lastname"
+                  onChange={handleChange}
+                  value={data.lastname}
+                ></input>
+              </div>
+            )}
+
             <div>
               <input
                 type="text"
-                placeholder="First Name"
+                placeholder="Email"
                 className="infoInput"
-                name="firstname"
+                name="username"
                 onChange={handleChange}
-                value={data.firstname}
-              ></input>
-              <input
-                type="text"
-                placeholder="Last Name"
-                className="infoInput"
-                name="lastname"
-                onChange={handleChange}
-                value={data.lastname}
+                value={data.username}
               ></input>
             </div>
-          )}
 
-          <div>
-            <input
-              type="text"
-              placeholder="Email"
-              className="infoInput"
-              name="username"
-              onChange={handleChange}
-              value={data.username}
-            ></input>
-          </div>
-
-          <div>
-            <input
-              type="password"
-              placeholder="Password"
-              className="infoInput"
-              name="password"
-              onChange={handleChange}
-              value={data.password}
-            ></input>
-
-            {isSignUp && (
+            <div>
               <input
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="Password"
                 className="infoInput"
-                name="confirmpass"
+                name="password"
                 onChange={handleChange}
-                value={data.confirmpass}
+                value={data.password}
               ></input>
-            )}
-          </div>
 
-          <span
-            style={{
-              display: confirmPass ? "none" : "block",
-              color: "red",
-              fontSize: "16px",
-              alignSelf: "center",
-              fontWeight: "500",
-            }}
-          >
-            * Password mismatch!
-          </span>
+              {isSignUp && (
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  className="infoInput"
+                  name="confirmpass"
+                  onChange={handleChange}
+                  value={data.confirmpass}
+                ></input>
+              )}
+            </div>
 
-          <div>
             <span
               style={{
+                display: confirmPass ? "none" : "block",
+                color: "red",
                 fontSize: "16px",
-                fontWeight: "bold",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setIsSignUp((prev) => !prev);
-                resetForm();
+                alignSelf: "center",
+                fontWeight: "500",
               }}
             >
-              {isSignUp
-                ? "Already have an account? Login"
-                : "Don't have an account? Signup"}
+              * Password mismatch!
             </span>
-          </div>
 
-          <div>
-            <button
-              className="button infoButton"
-              type="submit"
-              disabled={loading}
-            >
-              {loading ? "Loading..." : isSignUp ? "Signup" : "Login"}
-            </button>
+            <div>
+              <span
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  setIsSignUp((prev) => !prev);
+                  resetForm();
+                }}
+              >
+                {isSignUp
+                  ? "Already have an account? Login"
+                  : "Don't have an account? Signup"}
+              </span>
+            </div>
 
-            {!isSignUp && (
-              <button className="button infoButton" onClick={handleGuest}>
-                Guest Login
+            <div>
+              <button
+                className="button infoButton"
+                type="submit"
+                disabled={loading}
+              >
+                {loading ? "Loading..." : isSignUp ? "Signup" : "Login"}
               </button>
-            )}
-          </div>
-        </form>
+
+              {!isSignUp && (
+                <button className="button infoButton" onClick={handleGuest}>
+                  Guest Login
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </Slide>
   );
 };
 
