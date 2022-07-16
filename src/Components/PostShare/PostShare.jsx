@@ -29,7 +29,7 @@ const PostShare = () => {
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
-
+      console.log(event);
       setImage(img);
     }
   };

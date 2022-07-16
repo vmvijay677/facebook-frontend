@@ -13,6 +13,8 @@ const Post = ({ data }) => {
   const [liked, setLiked] = useState(data.likes.includes(user._id));
   const [likes, setLikes] = useState(data.likes.length);
 
+  const serverPublic = "https://facebook-thenextgen.herokuapp.com/images/";
+
   const handleLike = () => {
     setLiked((prev) => !prev);
     likePost(data._id, user._id);
@@ -21,12 +23,7 @@ const Post = ({ data }) => {
 
   return (
     <div className="Post">
-      <img
-        src={
-          data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : " "
-        }
-        alt=""
-      ></img>
+      <img src={data.image ? serverPublic + data.image : " "} alt=""></img>
 
       <div className="postReact">
         <div
