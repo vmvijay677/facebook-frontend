@@ -46,6 +46,14 @@ const Auth = () => {
     });
   };
 
+  const handleGuest = (e) => {
+    e.preventDefault();
+    setData({
+      username: "guest_user@gmail.com",
+      password: "guestuser",
+    });
+  };
+
   return (
     <div className="Auth">
       <div className="a-left">
@@ -146,13 +154,22 @@ const Auth = () => {
                 : "Don't have an account? Signup"}
             </span>
           </div>
-          <button
-            className="button infoButton"
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? "Loading..." : isSignUp ? "Signup" : "Login"}
-          </button>
+
+          <div>
+            <button
+              className="button infoButton"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : isSignUp ? "Signup" : "Login"}
+            </button>
+
+            {!isSignUp && (
+              <button className="button infoButton" onClick={handleGuest}>
+                Guest Login
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>
