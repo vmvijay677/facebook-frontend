@@ -7,7 +7,7 @@ const User = ({ person }) => {
 
   //const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  const serverPublic = "https://facebook-thenextgen.herokuapp.com/images/";
+  const serverPublic = "https://facebook-backend-vignesh.vercel.app/images/";
 
   const { user } = useSelector((state) => state.authReducer.authData);
 

@@ -13,7 +13,7 @@ const Post = ({ data }) => {
   const [liked, setLiked] = useState(data.likes.includes(user._id));
   const [likes, setLikes] = useState(data.likes.length);
 
-  const serverPublic = "https://facebook-thenextgen.herokuapp.com/images/";
+  const serverPublic = "https://facebook-backend-vignesh.vercel.app/images/";
 
   const handleLike = () => {
     setLiked((prev) => !prev);

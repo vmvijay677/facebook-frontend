@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://facebook-thenextgen.herokuapp.com" });
+const API = axios.create({ baseURL: "https://facebook-backend-vignesh.vercel.app" });
 
 export const getTimelinePosts = (id) => API.get(`/post/${id}/timeline`);
 
